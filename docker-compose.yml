@@ -1,5 +1,6 @@
 services:
   net-village-web:
+    image: islamek/net-village:latest
     build:
       context: .
       dockerfile: Dockerfile
