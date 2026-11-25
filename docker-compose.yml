@@ -29,12 +29,12 @@ services:
     command: ["python3", "/runner/server.py"]
     environment:
       - DEMO_MODE=${DEMO_MODE:-true}
-      - ACCESS_CSV_PATH=/runner/secrets.csv
+      - ACCESS_CSV_PATH=/secrets/secrets.csv
       - BACKUPS_DIR=/runner/backups
       - CLAUDE_RULES_PATH=/runner/CLAUDE.md
     volumes:
       - ./agent-runner:/runner:ro
-      - ${HOST_ACCESS_CSV:-./secrets.csv.example}:/runner/secrets.csv:ro
+      - ${HOST_ACCESS_CSV:-./secrets.csv.example}:/secrets/secrets.csv:ro
       - ./backups:/runner/backups
       - ./CLAUDE.md:/runner/CLAUDE.md:ro
     ports:
