@@ -1,0 +1,41 @@
+services:
+  net-village-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: net-village-web
+    ports:
+      - "3000:3000"
+    environment:
+      - DEMO_MODE=${DEMO_MODE:-true}
+      - ACCESS_CSV_PATH=/app/secrets.csv
+      - DATA_DIR=/app/data
+      - BACKUPS_DIR=/app/backups
+      - AGENT_RUNNER_URL=http://net-village-runner:8090
+    volumes:
+      - ${HOST_ACCESS_CSV:-./secrets.csv.example}:/app/secrets.csv:ro
+      - ./data:/app/data
+      - ./backups:/app/backups
+      - ./CLAUDE.md:/app/CLAUDE.md:ro
+    depends_on:
+      - net-village-runner
+    restart: unless-stopped
+
+  net-village-runner:
+    image: python:3.12-slim
+    container_name: net-village-runner
+    working_dir: /runner
+    command: ["python3", "/runner/server.py"]
+    environment:
+      - DEMO_MODE=${DEMO_MODE:-true}
+      - ACCESS_CSV_PATH=/runner/secrets.csv
+      - BACKUPS_DIR=/runner/backups
+      - CLAUDE_RULES_PATH=/runner/CLAUDE.md
+    volumes:
+      - ./agent-runner:/runner:ro
+      - ${HOST_ACCESS_CSV:-./secrets.csv.example}:/runner/secrets.csv:ro
+      - ./backups:/runner/backups
+      - ./CLAUDE.md:/runner/CLAUDE.md:ro
+    ports:
+      - "8090:8090"
+    restart: unless-stopped

@@ -1,0 +1,12 @@
+node_modules
+.svelte-kit
+build
+dist
+.env
+.env.*
+!.env.example
+secrets.csv
+backups/*
+!backups/.gitkeep
+data/runtime-state.json
+.DS_Store

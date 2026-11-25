@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "buildings": {
+    "town-hall": {
+      "buildingId": "town-hall",
+      "buildingName": "Town Hall HQ",
+      "agentId": "chief-orchestrator",
+      "deviceTags": ["all", "hq", "core"],
+      "modules": ["orchestrator", "work-orders", "meeting-room", "csv-lookup"]
+    },
+    "firewall-forge": {
+      "buildingId": "firewall-forge",
+      "buildingName": "Firewall Forge",
+      "agentId": "firewall-specialist",
+      "deviceTags": ["fortigate", "firewall", "vpn", "nat"],
+      "modules": ["fortigate-policy", "ipsec-sslvpn", "nat-session-inspect", "threat-telemetry"]
+    },
+    "router-yard": {
+      "buildingId": "router-yard",
+      "buildingName": "Router Yard",
+      "agentId": "routing-specialist",
+      "deviceTags": ["mikrotik", "cisco", "rb951", "hq", "jump-host"],
+      "modules": ["mikrotik-ssh-ct200w", "jump-host-proxy", "mac-telnet", "bgp-ospf-inspect"]
+    },
+    "wireguard-hub": {
+      "buildingId": "wireguard-hub",
+      "buildingName": "WireGuard Hub",
+      "agentId": "wireguard-specialist",
+      "deviceTags": ["wireguard", "vpn", "ovis-dfr", "tunnel"],
+      "modules": ["wg-peer-verify", "ovis-dfr-precheck", "allowed-ips-audit", "handshake-monitor"]
+    },
+    "dns-tower": {
+      "buildingId": "dns-tower",
+      "buildingName": "DNS Observatory Tower",
+      "agentId": "dns-specialist",
+      "deviceTags": ["dns", "bind", "named", "afrinet"],
+      "modules": ["bind-zone-protocol", "soa-serial-guard", "named-checkzone", "dig-verifier"]
+    }
+  }
+}
