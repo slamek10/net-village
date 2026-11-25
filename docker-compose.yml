@@ -33,7 +33,7 @@ services:
       - BACKUPS_DIR=/runner/backups
       - CLAUDE_RULES_PATH=/runner/CLAUDE.md
     volumes:
-      - ./agent-runner:/runner:ro
+      - ./agent-runner:/runner
       - ${HOST_ACCESS_CSV:-./secrets.csv.example}:/secrets/secrets.csv:ro
       - ./backups:/runner/backups
       - ./CLAUDE.md:/runner/CLAUDE.md:ro
