@@ -17,7 +17,6 @@ services:
       - ${HOST_ACCESS_CSV:-./secrets.csv.example}:/app/secrets.csv:ro
       - ./data:/app/data
       - ./backups:/app/backups
-      - ./CLAUDE.md:/app/CLAUDE.md:ro
     depends_on:
       - net-village-runner
     restart: unless-stopped
